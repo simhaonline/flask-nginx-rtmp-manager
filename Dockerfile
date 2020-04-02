@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER David Lockwood
 
-ARG NGINX_VERSION=1.17.3
+ARG NGINX_VERSION=1.17.9
 ARG NGINX_RTMP_VERSION=1.2.1
 
 ARG DEFAULT_DB_URL="sqlite:///db/database.db"

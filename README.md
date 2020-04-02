@@ -175,15 +175,15 @@ apt-get install gunicorn3 uwsgi-plugin-python
 * Nginx may require --with-cc-opt="-Wimplicit-fallthrough=0" added to ./configure to build on Debian and >= Ubuntu 18.10 to build
 ```
 cd /tmp
-wget "http://nginx.org/download/nginx-1.17.3.tar.gz"
+wget "http://nginx.org/download/nginx-1.17.9.tar.gz"
 wget "https://github.com/arut/nginx-rtmp-module/archive/v1.2.1.zip"
 wget "http://www.zlib.net/zlib-1.2.11.tar.gz"
 wget "https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/get/master.tar.gz"
-tar xvfz nginx-1.17.3.tar.gz
+tar xvfz nginx-1.17.9.tar.gz
 unzip v1.2.1.zip
 tar xvfz zlib-1.2.11.tar.gz
 sudo tar xvfz master.tar.gz
-cd nginx-1.17.3
+cd nginx-1.17.9
 ./configure --with-http_ssl_module --with-http_v2_module --with-http_auth_request_module --add-module=../nginx-rtmp-module-1.2.1 --add-module=../nginx-goodies-nginx-sticky-module-ng-08a395c66e42 --with-zlib=../zlib-1.2.11
 make
 make install
