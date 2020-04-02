@@ -51,7 +51,7 @@ Open Streaming Platform uses a number of open source projects to work properly:
 * [[Animista](http://animista.net/)] - Awesome CSS Animation Generator
 * [List.js] - Handling List Sorting and Pagination
 
-And OSP itself is open source with a [public repository](https://gitlab.com/Deamos/flask-nginx-rtmp-manager) on Gitlab.
+And OSP itself is open source with a [public repository](https://github.com/r33int/flask-nginx-rtmp-manager) on Gitlab.
 
 ## Git Branches
 
@@ -76,7 +76,7 @@ OSP has been tested on Ubuntu 18.04 and Recent Debian Builds. The installation s
 
 Clone the Gitlab Repo
 ```
-git clone https://gitlab.com/Deamos/flask-nginx-rtmp-manager.git
+git clone https://github.com/r33int/flask-nginx-rtmp-manager.git
 ```
 
 Run the install script
@@ -147,7 +147,7 @@ An external Redis server is required to handling asynchronous communications bet
 1: Clone the Repo
 ```
 cd /opt
-git clone https://gitlab.com/Deamos/flask-nginx-rtmp-manager.git /opt/osp
+git clone https://github.com/r33int/flask-nginx-rtmp-manager.git /opt/osp
 ```
 2: Install Python 3 if not installed
 ```
