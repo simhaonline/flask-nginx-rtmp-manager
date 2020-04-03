@@ -103,11 +103,11 @@ app.config['UPLOADED_PHOTOS_DEST'] = '/var/www/images'
 app.config['UPLOADED_DEFAULT_DEST'] = '/var/www/images'
 app.config['SECURITY_POST_LOGIN_VIEW'] = 'main_page'
 app.config['SECURITY_POST_LOGOUT_VIEW'] = 'main_page'
-app.config['SECURITY_MSG_EMAIL_ALREADY_ASSOCIATED'] = ("Username or Email Already Associated with an Account", "error")
-app.config['SECURITY_MSG_INVALID_PASSWORD'] = ("Invalid Username or Password", "error")
-app.config['SECURITY_MSG_INVALID_EMAIL_ADDRESS'] = ("Invalid Username or Password","error")
-app.config['SECURITY_MSG_USER_DOES_NOT_EXIST'] = ("Invalid Username or Password","error")
-app.config['SECURITY_MSG_DISABLED_ACCOUNT'] = ("Account Disabled","error")
+app.config['SECURITY_MSG_EMAIL_ALREADY_ASSOCIATED'] = ("Nom d'utilisateur ou adresse E-mail déjà associée à un compte", "error")
+app.config['SECURITY_MSG_INVALID_PASSWORD'] = ("Nom d'utilisateur ou mot de passe invalide", "error")
+app.config['SECURITY_MSG_INVALID_EMAIL_ADDRESS'] = ("Nom d'utilisateur ou mot de passe invalide","error")
+app.config['SECURITY_MSG_USER_DOES_NOT_EXIST'] = ("Nom d'utilisateur ou mot de passe invalide","error")
+app.config['SECURITY_MSG_DISABLED_ACCOUNT'] = ("Compte désactivé.","error")
 app.config['VIDEO_UPLOAD_TEMPFOLDER'] = '/var/www/videos/temp'
 app.config["VIDEO_UPLOAD_EXTENSIONS"] = ["PNG", "MP4"]
 if config.redisPassword != '':
@@ -332,7 +332,7 @@ def init_db_values():
         app.config['SECURITY_SEND_CONFIRMATION_TEMPLATE'] = 'themes/' + sysSettings.systemTheme + '/security/send_confirmation.html'
         app.config['SECURITY_RESET_PASSWORD_TEMPLATE'] = 'themes/' + sysSettings.systemTheme + '/security/reset_password.html'
         app.config['SECURITY_EMAIL_SUBJECT_PASSWORD_RESET'] = sysSettings.siteName + " - Password Reset Request"
-        app.config['SECURITY_EMAIL_SUBJECT_REGISTER'] = sysSettings.siteName + " - Welcome!"
+        app.config['SECURITY_EMAIL_SUBJECT_REGISTER'] = sysSettings.siteName + " - Bienvenue !"
         app.config['SECURITY_EMAIL_SUBJECT_PASSWORD_NOTICE'] = sysSettings.siteName + " - Password Reset Notification"
         app.config['SECURITY_EMAIL_SUBJECT_CONFIRM'] = sysSettings.siteName + " - Email Confirmation Request"
 
@@ -3965,7 +3965,7 @@ def handle_new_viewer(streamData):
             elif current_user.username.encode('utf-8') not in streamUserList:
                 r.rpush(channelLoc + '-streamUserList', current_user.username)
 
-            emit('message', {'user':'Server','msg': current_user.username + ' has entered the room.', 'image': pictureLocation}, room=streamData['data'])
+            emit('message', {'user':'Serveur','msg': current_user.username + ' a rejoint la discussion ! 👋', 'image': pictureLocation}, room=streamData['data'])
             runWebhook(requestedChannel.id, 2, channelname=requestedChannel.channelName,
                        channelurl=(sysSettings.siteProtocol + sysSettings.siteAddress + "/channel/" + str(requestedChannel.id)),
                        channeltopic=requestedChannel.topic,
@@ -3977,7 +3977,6 @@ def handle_new_viewer(streamData):
                        streamimage=(sysSettings.siteProtocol + sysSettings.siteAddress + "/stream-thumb/" + requestedChannel.channelLoc + ".png"),
                        user=current_user.username, userpicture=(sysSettings.siteProtocol + sysSettings.siteAddress + pictureLocation))
         else:
-            emit('message', {'user':'Server','msg': 'Guest has entered the room.', 'image': '/static/img/user2.png'}, room=streamData['data'])
             runWebhook(requestedChannel.id, 2, channelname=requestedChannel.channelName,
                        channelurl=(sysSettings.siteProtocol + sysSettings.siteAddress + "/channel/" + str(requestedChannel.id)),
                        channeltopic=requestedChannel.topic,
@@ -4041,11 +4040,9 @@ def handle_leaving_viewer(streamData):
                 pictureLocation = '/static/img/user2.png'
             else:
                 pictureLocation = '/images/' + pictureLocation
-
-            emit('message', {'user':'Server', 'msg': current_user.username + ' has left the room.', 'image': pictureLocation}, room=streamData['data'])
         else:
             if requestedChannel.showChatJoinLeaveNotification:
-                emit('message', {'user':'Server', 'msg': 'Guest has left the room.', 'image': '/static/img/user2.png'}, room=streamData['data'])
+                print("no")
 
     handle_viewer_total_request(streamData, room=streamData['data'])
 

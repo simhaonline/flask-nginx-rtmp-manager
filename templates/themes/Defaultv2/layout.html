@@ -44,24 +44,18 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto" id="main-navbar-options">
           <form class="form-inline my-2 my-lg-0 mr-auto" action="/search" method="post">
-            <input class="form-control search" name="term" type="search" placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome" aria-label="Search" size="24">
+            <input class="form-control search" name="term" type="search" placeholder="&#xF002; Rechercher" style="font-family:Arial, FontAwesome" aria-label="Rechercher" size="24">
           </form>
           <li class="nav-item px-2">
-            <a class="nav-link zoom" href="/channels"><b><i class="fas fa-tv"></i> Channels</b></a>
-          </li>
-          <li class="nav-item px-2">
-            <a class="nav-link zoom" href="/topics"><b><i class="fas fa-hashtag"></i> Topics</b></a>
-          </li>
-          <li class="nav-item px-2">
-            <a class="nav-link zoom" href="/streamers"><b><i class="fas fa-users"></i> Streamers</b></a>
+            <a class="nav-link zoom" href="/channels"><b><i class="fas fa-tv"></i> Chaînes</b></a>
           </li>
           {% if user.is_authenticated == False %}
           <li class="nav-item px-2">
-            <a class="nav-link zoom" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a class="nav-link zoom" href="/login"><i class="fas fa-sign-in-alt"></i> Connexion</a>
           </li>
           {% if allowRegistration == True %}
           <li class="nav-item px-2">
-            <a class="nav-link zoom" href="/register"><i class="far fa-id-card"></i> Register</a>
+            <a class="nav-link zoom" href="/register"><i class="far fa-id-card"></i> Inscription</a>
           </li>
           {% endif %}
           {% else %}
@@ -77,7 +71,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-sm-12 col-12">
                       <span>Notifications <span class="badge badge-light" id="notificationCountMenu">{{notifications|count}}</span></span>
-                      <a href="javascript:void(0);" class="float-right text-light" onclick="clearAllNotifications(); return false;">Mark all as read</a>
+                      <a href="javascript:void(0);" class="float-right text-light" onclick="clearAllNotifications(); return false;">Tout marquer comme lu</a>
                     </div>
                   </div>
                 </li>
@@ -101,14 +95,14 @@
                     <li class="notification-box" id="notification-empty" {% if notifications != [] %} style="display:none;" {% endif %}>
                     <div class="row">
                       <div class="col-lg-12 col-sm-12 col-12">
-                        <div>No New Notifications</div>
+                        <div>Aucune nouvelle notification</div>
                       </div>
                     </div>
                     </li>
                 </div>
 
                 <li class="footer bg-dark text-center">
-                  <a href="/notifications" class="text-light">View All</a>
+                  <a href="/notifications" class="text-light">Voir tout</a>
                 </li>
             </ul>
           </li>
@@ -118,20 +112,20 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               {% if user.has_role('Admin') %}
-              <a class="dropdown-item" href="/settings/admin"><i class="fas fa-server"></i> Admin</a>
+              <a class="dropdown-item" href="/settings/admin"><i class="fas fa-server"></i> Administration</a>
               {% endif %}
               {% if user.has_role('Streamer') %}
-              <a class="dropdown-item" href="/settings/channels"><i class="fas fa-video"></i> My Channels</a>
+              <a class="dropdown-item" href="/settings/channels"><i class="fas fa-video"></i> Mes chaînes</a>
               {% if sysSettings.allowUploads == True %}
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#uploadModal"><i class="fas fa-upload"></i> Upload Video</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#uploadModal"><i class="fas fa-upload"></i> Ajouter une vidéo</a>
               {% endif %}
-              <a class="dropdown-item" href="/settings/api"><i class="fas fa-key"></i> API Keys</a>
+              <a class="dropdown-item" href="/settings/api"><i class="fas fa-key"></i> Clés API</a>
               {% endif %}
-              <a class="dropdown-item" href="/settings/user/subscriptions"><i class="fas fa-star"></i> Subscriptions</a>
-              <a class="dropdown-item" href="/settings/user"><i class="fas fa-cogs"></i> Settings</a>
-              <a class="dropdown-item" href="https://openstreamingplatform.com/support"><i class="fas fa-question-circle"></i> Help</a>
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal"><i class="fas fa-info-circle"></i> About</a>
-              <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+              <a class="dropdown-item" href="/settings/user/subscriptions"><i class="fas fa-star"></i> Abonnements</a>
+              <a class="dropdown-item" href="/settings/user"><i class="fas fa-cogs"></i> Paramètres</a>
+              <a class="dropdown-item" href="https://openstreamingplatform.com/support"><i class="fas fa-question-circle"></i> Aide</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal"><i class="fas fa-info-circle"></i> A propos</a>
+              <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
             </div>
           </li>
         </ul>
@@ -210,7 +204,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
         </div>
       </div>
     </div>
@@ -220,18 +214,18 @@
       <div class="modal-content">
         <form id="uploadform" action="/upload/video-details" enctype=multipart/form-data method="post">
           <div class="modal-header">
-            <h5 class="modal-title" id="moveModalTitle">Upload a video</h5>
+            <h5 class="modal-title" id="moveModalTitle">Ajouter une vidéo</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="canceluploads()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="videoTitle">Title</label>
+              <label for="videoTitle">Titre</label>
               <input class="form-control" id="videoTitle" name="videoTitle">
             </div>
             <div class="form-group">
-              <label for="uploadToChannelID">Channel</label>
+              <label for="uploadToChannelID">Chaîne</label>
               <select name="uploadToChannelID" class="form-control">
                 {% for chan in current_user.channels %}
                 <option value="{{chan.id}}">{{chan.channelName}}</option>
@@ -239,12 +233,12 @@
               </select>
             </div>
 
-            <span>Thumbnail <span id="thumbnailuploadstatus"></span></span>
+            <span>Miniature <span id="thumbnailuploadstatus"></span></span>
             <!-- hidden dropzone -->
             <div class="dropzone" id="thumbnaildropper" enctype="multipart/form-data"></div>
             <div class="form-group row">
               <div class="col-2 my-auto">
-                <button id="thumbnailuploadbutton" type="button" class="btn btn-sm btn-primary">Browse</button>
+                <button id="thumbnailuploadbutton" type="button" class="btn btn-sm btn-primary">Naviguer</button>
               </div>
               <div class="col-10">
                 <input class="form-control pl-2 form-control" id="thumbnailFilenameDisplay" name="thumbnailFilename" placeholder="Filename" disabled />
@@ -261,7 +255,7 @@
             <div class="dropzone" id="videodropper" enctype="multipart/form-data"></div>
             <div class="form-group row">
               <div class="col-2 my-auto">
-                <button id="videouploadbutton" type="button" class="btn btn-sm btn-primary">Browse</button>
+                <button id="videouploadbutton" type="button" class="btn btn-sm btn-primary">Naviguer</button>
               </div>
               <div class="col-10">
                 <input class="form-control pl-2 form-control" id="videoFilenameDisplay" name="videoFilename" placeholder="Filename" disabled />
@@ -274,14 +268,14 @@
             </div>
 
             <div class="form-group">
-              <label for="videoDescription">Video description</label>
+              <label for="videoDescription">Description de la vidéo</label>
               <textarea class="form-control" id="videoDescription" name="videoDescription" rows="3"></textarea>
             </div>
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="canceluploads()">Cancel</button>
-            <button id="uploadbutton" type="submit" class="btn btn-success" disabled>Upload</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="canceluploads()">Annuler</button>
+            <button id="uploadbutton" type="submit" class="btn btn-success" disabled>Mettre en ligne</button>
           </div>
         </form>
       </div>
@@ -364,12 +358,12 @@
     });
     thumbnaildropper.on("success", function (file) {
       document.getElementById('thumbnailuploadstatus').innerHTML = document.getElementById('thumbnailuploadstatus').innerHTML = ' <i class="fas fa-check">';
-      document.getElementById('thumbnailuploadprogress').innerHTML = document.getElementById('thumbnailuploadprogress').innerHTML = 'Upload complete';
+      document.getElementById('thumbnailuploadprogress').innerHTML = document.getElementById('thumbnailuploadprogress').innerHTML = 'Mise en ligne terminée';
 
     });
     thumbnaildropper.on('error', function (file, response) {
       document.getElementById('thumbnailuploadstatus').innerHTML = document.getElementById('thumbnailuploadstatus').innerHTML = ' <i class="fas fa-exclamation-triangle"></i>';
-      document.getElementById('thumbnailFilenameDisplay').value = 'Error: ' + response;
+      document.getElementById('thumbnailFilenameDisplay').value = 'Erreur : ' + response;
     });
 
     var videodropper = new Dropzone(
@@ -404,11 +398,11 @@
     videodropper.on("success", function (file) {
       $('#uploadbutton').removeAttr('disabled');
       document.getElementById('videouploadstatus').innerHTML = document.getElementById('videouploadstatus').innerHTML = '<i class="fas fa-check">';
-      document.getElementById('videouploadprogress').innerHTML = document.getElementById('videouploadprogress').innerHTML = 'Upload complete';
+      document.getElementById('videouploadprogress').innerHTML = document.getElementById('videouploadprogress').innerHTML = 'Mise en ligne terminée';
     });
     videodropper.on('error', function (file, response) {
       document.getElementById('videouploadstatus').innerHTML = document.getElementById('videouploadstatus').innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
-      document.getElementById('videoFilenameDisplay').value = 'Error: ' + response;
+      document.getElementById('videoFilenameDisplay').value = 'Erreur : ' + response;
     });
   </script>
   <script>

@@ -18,7 +18,7 @@
     <div class="jumbotron shadow mt-2 p-3">
         <div class="row p-2">
             <div>
-                <h2 class="display-5"><b>Server Message</b></h2>
+                <h2 class="display-5"><b>Message du serveur</b></h2>
             </div>
         </div>
         <div class="row p-2">
@@ -32,9 +32,9 @@
 </div>
 <div class="container-fluid p-2" id="index-streams-container">
     <div class="row mx-4">
-        <div class="index-video-title"><b>Live Now</b></div>
+        <div class="index-video-title"><b>Actuellement en direct</b></div>
         {% if streamList == [] %}
-        No Live Streams Online...
+        Aucune diffusion en direct n'est en cours actuellement :(
         {% endif %}
     </div>
     <div class="row mx-1">
@@ -44,8 +44,8 @@
               <a href="/view/{{stream.channel.channelLoc}}/">
                 <div class="displayCard-thumbnail zoom">
                   <div class="video-badges">
-                    <span class="badge badge-danger mx-1"><i class="fas fa-video"></i> Live</span>
-                    {% if stream.channel.protected and sysSettings.protectionEnabled %}<span class="badge badge-warning mx-1"><i class="fas fa-user-lock"></i> Protected</span>{% endif %}
+                    <span class="badge badge-danger mx-1"><i class="fas fa-video"></i> EN DIRECT</span>
+                    {% if stream.channel.protected and sysSettings.protectionEnabled %}<span class="badge badge-warning mx-1"><i class="fas fa-user-lock"></i> Privé</span>{% endif %}
                   </div>
                   <img class="shadow gif lazy" {% if stream.channel.protected and sysSettings.protectionEnabled %} src="/static/img/video-locked.jpg" onerror="this.src='/static/img/video-locked.jpg';" {% else %} src="/static/img/video-placeholder.jpg" onerror="this.src='/static/img/video-placeholder.jpg';" {% endif %} data-src="/stream-thumb/{{stream.channel.channelLoc}}.png">
                   <div class="displayCard-counts">
@@ -74,7 +74,7 @@
 
 <div class="container-fluid p-2" id="index-videos-container">
     <div class="row mx-4">
-        <div class="index-video-title"><b>Videos</b></div>
+        <div class="index-video-title"><b>Vidéos</b></div>
     </div>
     <div class="row mx-1">
         <ul id="recordedVideosList" class="itemList d-flex flex-wrap justify-content-start">
@@ -83,7 +83,7 @@
                   <a href="/play/{{video.id}}">
                     <div class="displayCard-thumbnail zoom">
                       <div class="video-badges">
-                        {% if video.channel.protected and sysSettings.protectionEnabled %}<span class="badge badge-warning mx-2"><i class="fas fa-user-lock"></i> Protected</span>{% endif %}
+                        {% if video.channel.protected and sysSettings.protectionEnabled %}<span class="badge badge-warning mx-2"><i class="fas fa-user-lock"></i> Privé</span>{% endif %}
                       </div>
                       <img class="shadow {% if video.gifLocation != None %}gif{% endif %} lazy" src="/static/img/video-placeholder.jpg" data-src="/videos/{{video.thumbnailLocation}}" onerror="this.src='/static/img/video-placeholder.jpg';">
                       <div class="displayCard-counts">
@@ -122,7 +122,7 @@
               <a href="/clip/{{clip.id}}">
                 <div class="displayCard-thumbnail zoom">
                   <div class="video-badges">
-                    {% if clip.recordedVideo.channel.protected and sysSettings.protectionEnabled %}<span class="badge badge-warning mx-2"><i class="fas fa-user-lock"></i> Protected</span>{% endif %}
+                    {% if clip.recordedVideo.channel.protected and sysSettings.protectionEnabled %}<span class="badge badge-warning mx-2"><i class="fas fa-user-lock"></i> Privé</span>{% endif %}
                   </div>
                   <img class="shadow {% if clip.gifLocation != None %}gif{% endif %} lazy" {% if clip.recordedVideo.channel.protected and sysSettings.protectionEnabled %} src="/static/img/video-locked.jpg" onerror="this.src='/static/img/video-locked.jpg';" {% else %} src="/static/img/video-placeholder.jpg"
                             onerror="this.src='/static/img/video-placeholder.jpg';" {% endif %} data-src="/videos/{{clip.thumbnailLocation}}">

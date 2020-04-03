@@ -1,7 +1,7 @@
 {% extends "themes/" + sysSettings.systemTheme + "/layout.html" %}
 
 {% block head %}
-<title>{{sysSettings.siteName}} - Channels</title>
+<title>{{sysSettings.siteName}} - Chaînes</title>
 {% endblock %}
 
 {% block body %}
@@ -13,19 +13,19 @@
         <div id="channelList" class="col-lg col-xs-12 col-sm-12">
             <div class="row mx-2">
                 <div class="col-12 col-md-10 col-lg-11">
-                    <div class="index-live-title"><b>Channels</b></div>
+                    <div class="index-live-title"><b>Chaînes</b></div>
                 </div>
                 <div class="col-12 col-md-2 col-lg-1">
                     <span class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle shadow" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-sort"></i> Sort
+                            <i class="fas fa-sort"></i> Trier
                         </button>
                         <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
-                            <span class="sort dropdown-item" data-sort="name">Sort by Name</span>
-                            <span class="sort dropdown-item" data-sort="username">Sort by Streamer</span>
-                            <span class="sort dropdown-item" data-sort="subs">Sort by Subscriptions</span>
-                            <span class="sort dropdown-item" data-sort="views">Sort by Views</span>
-                            <span class="sort dropdown-item" data-sort="topic">Sort by Topic</span>
+                            <span class="sort dropdown-item" data-sort="name">Trier par nom</span>
+                            <span class="sort dropdown-item" data-sort="username">Trier par diffuseur</span>
+                            <span class="sort dropdown-item" data-sort="subs">Trier par abonnés</span>
+                            <span class="sort dropdown-item" data-sort="views">Trier par vues</span>
+                            <span class="sort dropdown-item" data-sort="topic">Trier par sujet</span>
                         </div>
                     </span>
                 </div>

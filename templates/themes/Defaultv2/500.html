@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{sysSettings.siteName}} - 500 Error</title>
+    <title>{{sysSettings.siteName}} - Erreur 500</title>
 </head>
 <body>
 <style>
@@ -47,12 +47,9 @@
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
     }
 </style>
-<video autoplay loop id="video-background" muted plays-inline>
-  <source src="/static/img/static.mp4" type="video/mp4">
-</video>
 <div class="center">
     <div class="errorShadow" style="font-size:15em;">500</div>
-    <div class="errorText">Something is broken - {{error}}<br> <a href="/">Click here to return</a></div>
+    <div class="errorText">Une erreur s'est produite - {{error}}<br> <a href="/">Page d'accueil</a></div>
 </div>
 </body>
 </html>

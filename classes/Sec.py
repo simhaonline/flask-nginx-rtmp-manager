@@ -11,10 +11,10 @@ class ExtendedRegisterForm(RegisterForm):
         if not super(ExtendedRegisterForm, self).validate():
             success = False
         if db.session.query(User).filter(User.username == self.username.data.strip()).first():
-            self.username.errors.append("Username already taken")
+            self.username.errors.append("Nom d'utilisateur déà utilisé")
             success = False
         if db.session.query(User).filter(User.email == self.email.data.strip()).first():
-            self.email.errors.append("Email address already taken")
+            self.email.errors.append("Adresse E-mail déjà utilisée")
             success = False
         return success
 
