@@ -1439,9 +1439,9 @@ def view_page(loc):
                 if current_user.is_authenticated:
                     secureHash = hashlib.sha256((current_user.username + requestedChannel.channelLoc + current_user.password).encode('utf-8')).hexdigest()
                     username = current_user.username
-                    rtmpURI = 'rtmp://' + sysSettings.siteAddress + ":1935/" + endpoint + "/" + requestedChannel.channelLoc + "?username=" + username + "&hash=" + secureHash
+                    rtmpURI = 'rtmp://' + "live.hifumi.us" + ":1935/" + endpoint + "/" + requestedChannel.channelLoc + "?username=" + username + "&hash=" + secureHash
             else:
-                rtmpURI = 'rtmp://' + sysSettings.siteAddress + ":1935/" + endpoint + "/" + requestedChannel.channelLoc
+                rtmpURI = 'rtmp://' + "live.hifumi.us" + ":1935/" + endpoint + "/" + requestedChannel.channelLoc
 
             randomRecorded = RecordedVideo.RecordedVideo.query.filter_by(pending=False, published=True, channelID=requestedChannel.id).order_by(func.random()).limit(16)
 
